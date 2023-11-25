@@ -1,13 +1,9 @@
-FROM node
+FROM php:8-apache
 
-WORKDIR /app
-
-COPY package*.json .
-
-RUN npm i
+WORKDIR /var/www/html
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 80
 
-CMD [ "node", "app.js" ]
+RUN chown -R www-data:www-data /var/www
