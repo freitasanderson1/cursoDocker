@@ -1,9 +1,15 @@
-FROM php:8-apache
+FROM python:3
 
-WORKDIR /var/www/html/
+RUN apt-get update -y && \
+    apt-get install -y python3-pip python3-dev
+
+WORKDIR /app
+
+RUN pip install Flask
+RUN pip install requests
 
 COPY . .
 
-EXPOSE 80
+EXPOSE 5000
 
-RUN chown -R www-data:www-data /var/www
+CMD [ "python", "./app.py" ]
