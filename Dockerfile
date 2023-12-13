@@ -5,8 +5,7 @@ RUN apt-get update -y && \
 
 WORKDIR /app
 
-RUN pip install Flask
-RUN pip install requests
+RUN pip install Flask requests flask_mysqldb
 
 COPY . .
 
